@@ -1,4 +1,4 @@
-package com.sachin.notedb.model;
+package com.sachin.roomdb.model;
 
 
 import androidx.room.ColumnInfo;

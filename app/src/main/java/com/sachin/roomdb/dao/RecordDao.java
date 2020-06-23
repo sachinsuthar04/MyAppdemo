@@ -1,10 +1,10 @@
-package com.sachin.notedb.dao;
+package com.sachin.roomdb.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.sachin.notedb.model.Recorduser;
+import com.sachin.roomdb.model.Recorduser;
 import com.sachin.util.Constants;
 
 import java.util.List;

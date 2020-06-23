@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.sachin.adapter.RecordAdapter;
 import com.sachin.databinding.ActivityMainBinding;
-import com.sachin.notedb.RecordDatabase;
-import com.sachin.notedb.model.Recorduser;
+import com.sachin.roomdb.RecordDatabase;
+import com.sachin.roomdb.model.Recorduser;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

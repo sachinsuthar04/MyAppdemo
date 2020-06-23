@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sachin.R;
-import com.sachin.notedb.model.Recorduser;
+import com.sachin.roomdb.model.Recorduser;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -33,7 +33,6 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.BeanHolder
     private List<Recorduser> list;
     private Context context;
     private LayoutInflater layoutInflater;
-    private CheckBox chkSelected;
 
     public RecordAdapter(List<Recorduser> list, Context context) {
         layoutInflater = LayoutInflater.from(context);

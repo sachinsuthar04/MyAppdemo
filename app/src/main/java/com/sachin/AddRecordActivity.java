@@ -16,8 +16,8 @@ import androidx.databinding.DataBindingUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sachin.databinding.ActivityAddNoteBinding;
-import com.sachin.notedb.RecordDatabase;
-import com.sachin.notedb.model.Recorduser;
+import com.sachin.roomdb.RecordDatabase;
+import com.sachin.roomdb.model.Recorduser;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

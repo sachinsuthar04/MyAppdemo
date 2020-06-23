@@ -1,4 +1,4 @@
-package com.sachin.notedb;
+package com.sachin.roomdb;
 
 
 import android.content.Context;
@@ -7,8 +7,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.sachin.notedb.dao.RecordDao;
-import com.sachin.notedb.model.Recorduser;
+import com.sachin.roomdb.dao.RecordDao;
+import com.sachin.roomdb.model.Recorduser;
 import com.sachin.util.Constants;
 
 /**
