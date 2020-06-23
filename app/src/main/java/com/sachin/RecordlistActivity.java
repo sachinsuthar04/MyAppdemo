@@ -76,16 +76,16 @@ public class RecordlistActivity extends AppCompatActivity {
         @Override
         protected List<Recorduser> doInBackground(Void... voids) {
             if (activityReference.get() != null)
-                return activityReference.get().recordDatabase.getNoteDao().getrecords();
+                return activityReference.get().recordDatabase.getrecordDao().getrecords();
             else
                 return null;
         }
 
         @Override
-        protected void onPostExecute(List<Recorduser> notes) {
-            if (notes != null && notes.size() > 0) {
+        protected void onPostExecute(List<Recorduser> record) {
+            if (record != null && record.size() > 0) {
                 activityReference.get().recorduser.clear();
-                activityReference.get().recorduser.addAll(notes);
+                activityReference.get().recorduser.addAll(record);
                 // hides empty text view
                 activityReference.get().mBinding.recyclerView.setVisibility(View.VISIBLE);
                 activityReference.get().mBinding.tvEmpty.setVisibility(View.GONE);

@@ -17,7 +17,7 @@ import com.sachin.util.Constants;
 @Database(entities = {Recorduser.class}, version = 1)
 public abstract class RecordDatabase extends RoomDatabase {
 
-    public abstract RecordDao getNoteDao();
+    public abstract RecordDao getrecordDao();
 
 
     private static RecordDatabase recordDatabase;

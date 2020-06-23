@@ -15,7 +15,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.sachin.databinding.ActivityAddNoteBinding;
+import com.sachin.databinding.ActivityAddRecordBinding;
 import com.sachin.roomdb.RecordDatabase;
 import com.sachin.roomdb.model.Recorduser;
 
@@ -33,16 +33,16 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
     private static final int CAMERA_REQUEST = 111;
     private static final int GALLERY_REQUEST = 222;
     private String profilePath = "";
-    private RecordDatabase noteDatabase;
+    private RecordDatabase recordDatabase;
     private Recorduser recorduser;
-    ActivityAddNoteBinding mBinding;
+    ActivityAddRecordBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_record);
 
-        noteDatabase = RecordDatabase.getInstance(AddRecordActivity.this);
+        recordDatabase = RecordDatabase.getInstance(AddRecordActivity.this);
 
         setlistner();
 
@@ -199,7 +199,7 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
         @Override
         protected Boolean doInBackground(Void... objs) {
             // retrieve auto incremented note id
-            long j = activityReference.get().noteDatabase.getNoteDao().insertRecorduser(recorddata);
+            long j = activityReference.get().recordDatabase.getrecordDao().insertRecorduser(recorddata);
             recorddata.setRecord_id(j);
             Log.e("ID ", "doInBackground: " + j);
             return true;
