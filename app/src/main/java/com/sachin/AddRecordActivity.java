@@ -33,6 +33,7 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
     private static final int CAMERA_REQUEST = 111;
     private static final int GALLERY_REQUEST = 222;
     private String profilePath = "";
+
     private RecordDatabase recordDatabase;
     private Recorduser recorduser;
     ActivityAddRecordBinding mBinding;
