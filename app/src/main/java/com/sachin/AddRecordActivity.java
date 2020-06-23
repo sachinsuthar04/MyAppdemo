@@ -37,6 +37,7 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
     private Recorduser recorduser;
     ActivityAddRecordBinding mBinding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
