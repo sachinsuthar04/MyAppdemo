@@ -6,11 +6,14 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 
 import com.bumptech.glide.Glide;
@@ -19,7 +22,11 @@ import com.sachin.databinding.ActivityAddRecordBinding;
 import com.sachin.roomdb.RecordDatabase;
 import com.sachin.roomdb.model.Recorduser;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -70,16 +77,16 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
         if (EasyPermissions.hasPermissions(AddRecordActivity.this, perms)) {
             galleryIntent();
         } else {
-            EasyPermissions.requestPermissions(this, "Please allow external storage permission.", GALLERY_REQUEST, perms);
+            EasyPermissions.requestPermissions
+                    (this,"Please allow external storage permission.", GALLERY_REQUEST, perms);
         }
     }
-
     @AfterPermissionGranted(CAMERA_REQUEST)
     private void checkCameraPermission() {
         String[] perms = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(AddRecordActivity.this, perms)) {
-//            cameraIntent();
+            cameraIntent();
         } else {
             EasyPermissions.requestPermissions(AddRecordActivity.this,
                     "Allow Camera permission", CAMERA_REQUEST, perms);
@@ -93,8 +100,12 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
             startActivityForResult(intent, GALLERY_REQUEST);
         }
     }
-
-/*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
     private void cameraIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(this.getPackageManager()) != null) {
@@ -112,9 +123,7 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
             }
         }
     }
-*/
 
-/*
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -122,21 +131,20 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
 //        File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Camera");
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName,  */
-    /* prefix *//*
+                imageFileName,
+//     prefix
 
-                ".jpg",         */
-    /* suffix *//*
+                ".jpg",
+//     suffix
 
-                storageDir      */
-    /* directory *//*
+                storageDir
+//     directory
 
         );
         // Save a file: path for use with ACTION_VIEW in
         profilePath = "file:" + image.getAbsolutePath();
         return image;
     }
-*/
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
@@ -227,9 +235,9 @@ public class AddRecordActivity extends AppCompatActivity implements EasyPermissi
                 dialog.dismiss();
             });
 
-//            builder.setNegativeButton("Use Camera", (dialog, id) -> {
-//                checkCameraPermission();
-//            });
+            builder.setNegativeButton("Use Camera", (dialog, id) -> {
+                checkCameraPermission();
+            });
 
             AlertDialog dialog = builder.create();
             dialog.show();
